@@ -1,0 +1,10 @@
+db.sqlite3
+*.pyc
+venv/
+env/
+.idea/
+.python-version
+.env
+*.env
+**/migrations
+.DS_Store

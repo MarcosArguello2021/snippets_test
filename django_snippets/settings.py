@@ -118,8 +118,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = "/static/"
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
@@ -133,10 +135,10 @@ EMAIL_HOST = config("EMAIL_HOST", default="")
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
 EMAIL_PORT = config("EMAIL_PORT", default="")
-EMAIL_USE_TLS = config("EMAIL_USE_TLS", default="")
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
 
-CELERY_BROKER_URL = config("REDIS_URL", default="")
-CELERY_RESULT_BACKEND = config("REDIS_URL", default="")
+CELERY_BROKER_URL = config("REDIS_URL", default="redis://localhost:6379")
+CELERY_RESULT_BACKEND = config("REDIS_URL", default="redis://localhost:6379")
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TASK_SERIALIZER = "json"

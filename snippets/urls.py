@@ -7,9 +7,9 @@ urlpatterns = [
     path("login/", views.Login.as_view(), name="login"),
     path("logout/", views.Logout.as_view(), name="logout"),
     path(
-        "snippets/lang/<slug:language>/",
-        views.SnippetsByLanguage.as_view(),
-        name="language",
+        "snippets/lang/<slug:language>/", 
+        views.SnippetsByLanguage.as_view(), 
+        name="language"
     ),
     path(
         "snippets/user/<slug:username>/",
